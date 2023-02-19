@@ -1,0 +1,7 @@
+{
+    "name": "FCalculator",
+    "api_v": 1,
+    "version": "1.0",
+    "exec_path": "apps/fcalculator/calc.py",
+    "required_arguments": ["INSTANCE:::os | INSTANCE:::kernel"]
+}
