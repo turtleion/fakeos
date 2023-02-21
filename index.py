@@ -5,6 +5,7 @@ import shutil
 import json
 import dialog
 import pickle
+from pwd import getpwuid
 import base64
 from colorama import Fore, Back, Style
 d = dialog.Dialog("dialog")
@@ -272,18 +273,21 @@ class OS:
                         if os.path.isfile(os.getcwd()+"/"+i):
                             if args != None:
                                 if i.split("/")[-1].startswith("."):
-                                    continue 
+                                    continue
                             f.append(i)
                         if os.path.isdir(os.getcwd()+"/"+i):
                             if args != None:
                                 if i.split("/")[-1].startswith("."):
                                     continue 
                             d.append(i)
+                        if "-i" in args:
+                            for dir in d: print(getpwuid() + " " + Fore.BLUE + dir + Style.RESET_ALL, end="\n" )
+                            for file in f: print(getpwuid() + " " + Fore.GREEN + file + Style.RESET_ALL, end="\n") 
                     for h in hidden: print(Fore.YELLOW + h + Style.RESET_ALL, end=" ")
                     for dir in d: print(Fore.BLUE + dir + Style.RESET_ALL, end=" " )
                     for file in f: print(Fore.GREEN + file + Style.RESET_ALL, end=" ")
                     print("")
-
+                
                 elif ic == "ksettings":
                     self.kernel.k_settings()
                 elif ic == "exit":
